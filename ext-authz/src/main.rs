@@ -7,6 +7,7 @@ use service_auth::{
             OkHttpResponse,
         },
     },
+    google::rpc::Code,
     google::rpc::Status,
 };
 use tonic::{transport::Server, Request, Response};
@@ -20,9 +21,10 @@ pub struct ExtAuth {}
 
 impl ExtAuth {
     fn deny(&self) -> Result<Response<CheckResponse>, tonic::Status> {
+        println!("denied");
         let resp = CheckResponse {
             status: Some(Status {
-                code: StatusCode::Forbidden as i32,
+                code: Code::PermissionDenied as i32,
                 message: String::from("Forbidden"),
                 details: vec![],
             }),
@@ -40,9 +42,10 @@ impl ExtAuth {
     }
 
     fn allow(&self) -> Result<Response<CheckResponse>, tonic::Status> {
+        println!("allowed");
         let resp = CheckResponse {
             status: Some(Status {
-                code: StatusCode::Ok as i32,
+                code: Code::Ok as i32,
                 message: String::from("Ok"),
                 details: vec![],
             }),

@@ -1,4 +1,12 @@
-1. Define the external authorizer
+1. deploy ext-authz service
+```
+cd ext-authz
+eval $(minikube docker-env)
+docker build -t ext-authz -f Dockerfile .
+kubectl apply -f deployment.yaml
+```
+
+2. Define the external authorizer
 ```
 kubectl edit configmap istio -n istio-system
 ...
@@ -12,12 +20,12 @@ data:
         port: "5005"
 ```
 
-2. Enable with external authorization
+3. Enable with external authorization
 ```
 kubectl apply -f ext-authz.yaml
 ```
 
-3. Testing commands
+4. Testing commands
 ```
 minikube tunnel
 curl http://localhost/world

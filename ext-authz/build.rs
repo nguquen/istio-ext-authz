@@ -4,7 +4,10 @@ fn main() {
         .build_client(false)
         .include_file("mod.rs")
         .compile(
-            &["proto/envoy/api/envoy/service/auth/v3/external_auth.proto"],
+            &[
+                "proto/envoy/api/envoy/service/auth/v3/external_auth.proto",
+                "proto/googleapis/google/rpc/code.proto",
+            ],
             &[
                 "proto/envoy/api",
                 "proto/protoc-gen-validate",
