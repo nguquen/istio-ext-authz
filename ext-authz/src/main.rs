@@ -67,6 +67,8 @@ impl Authorization for ExtAuth {
         &self,
         request: Request<CheckRequest>,
     ) -> Result<Response<CheckResponse>, tonic::Status> {
+        println!("check: {:?}", &request);
+
         let token = request
             .into_inner()
             .attributes
@@ -74,6 +76,8 @@ impl Authorization for ExtAuth {
             .and_then(|r| r.http)
             .map(|h| h.headers)
             .and_then(|headers| headers.get("token").cloned());
+
+        println!("token: {:?}", &token);
 
         if token == Some(String::from("secured")) {
             return self.allow();

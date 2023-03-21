@@ -7,8 +7,9 @@ metadata:
     service: ext-authz
 spec:
   ports:
-  - port: 5005
-    name: tcp
+  - name: grpc
+    port: 5005
+    targetPort: 5005
   selector:
     app: ext-authz
 ---
