@@ -1,0 +1,12 @@
+[submodule "ext-authz/proto/googleapis"]
+	path = ext-authz/proto/googleapis
+	url = https://github.com/googleapis/googleapis
+[submodule "ext-authz/proto/envoy"]
+	path = ext-authz/proto/envoy
+	url = git@github.com:envoyproxy/envoy.git
+[submodule "ext-authz/proto/udpa"]
+	path = ext-authz/proto/udpa
+	url = git@github.com:cncf/udpa.git
+[submodule "ext-authz/proto/protoc-gen-validate"]
+	path = ext-authz/proto/protoc-gen-validate
+	url = git@github.com:bufbuild/protoc-gen-validate.git
